@@ -9,8 +9,20 @@
   ],
   "rewrites": [
     {
+      "handle": "filesystem"
+    },
+    {
       "source": "/api/:path*",
       "destination": "/api"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api"
     }
-  ]
+  ],
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 30
+    }
+  }
 }
