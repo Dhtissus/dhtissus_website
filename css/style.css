@@ -1294,6 +1294,22 @@ a, button, .catalog-filter, .product-details__tab {
 }
 
 /* ============================================
+   VOICE WIDGET (Qubot)
+   ============================================ */
+#vw-container {
+  right: auto !important;
+  left: calc(1.5rem + var(--safe-left)) !important;
+  bottom: calc(1.5rem + var(--safe-bottom)) !important;
+}
+
+@media (max-width: 768px) {
+  #vw-container {
+    left: calc(1.25rem + var(--safe-left)) !important;
+    bottom: calc(1.25rem + var(--safe-bottom)) !important;
+  }
+}
+
+/* ============================================
    WHATSAPP FLOAT
    ============================================ */
 .whatsapp-float {
