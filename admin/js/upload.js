@@ -2,6 +2,12 @@
  * DH TISSU Admin — Upload d'images vers le serveur
  */
 window.DH_UPLOAD = {
+  imageDisplayUrl(imagePath) {
+    if (!imagePath) return '';
+    if (/^https?:\/\//i.test(imagePath)) return imagePath;
+    return `/${String(imagePath).replace(/^\/+/, '')}`;
+  },
+
   async uploadImage(file) {
     const client = DH_ADMIN.getClient();
     const { data: { session } } = await client.auth.getSession();
@@ -16,7 +22,13 @@ window.DH_UPLOAD = {
       body: form,
     });
 
-    const data = await res.json();
+    const raw = await res.text();
+    let data;
+    try {
+      data = raw ? JSON.parse(raw) : {};
+    } catch {
+      throw new Error(raw.slice(0, 160) || 'Réponse serveur invalide');
+    }
     if (!res.ok) throw new Error(data.error || 'Upload échoué');
     return data.path;
   },
@@ -27,6 +39,7 @@ window.DH_UPLOAD = {
     const hiddenInput = document.getElementById(hiddenInputId);
     const preview = document.getElementById(previewId);
     const status = statusId ? document.getElementById(statusId) : null;
+    const displayUrl = (p) => DH_UPLOAD.imageDisplayUrl(p);
 
     pickBtn.addEventListener('click', () => fileInput.click());
 
@@ -43,7 +56,7 @@ window.DH_UPLOAD = {
       try {
         const imagePath = await this.uploadImage(file);
         hiddenInput.value = imagePath;
-        preview.src = `/${imagePath}?t=${Date.now()}`;
+        preview.src = `${displayUrl(imagePath)}?t=${Date.now()}`;
         preview.hidden = false;
         if (status) {
           status.textContent = 'Photo enregistrée';
@@ -67,7 +80,7 @@ window.DH_UPLOAD = {
           preview.removeAttribute('src');
           return;
         }
-        preview.src = `/${path}`;
+        preview.src = displayUrl(path);
         preview.hidden = false;
       },
       clearImage() {
@@ -87,6 +100,7 @@ window.DH_UPLOAD = {
     const status = statusId ? document.getElementById(statusId) : null;
     const deleteBtn = deleteBtnId ? document.getElementById(deleteBtnId) : null;
     let selectedIndex = -1;
+    const displayUrl = (p) => DH_UPLOAD.imageDisplayUrl(p);
 
     const getPaths = () => textarea.value.split('\n').map((s) => s.trim()).filter(Boolean);
 
@@ -107,7 +121,7 @@ window.DH_UPLOAD = {
 
       preview.innerHTML = paths.map((p, i) => `
         <div class="gallery-thumb${i === selectedIndex ? ' gallery-thumb--selected' : ''}" data-index="${i}" title="Cliquer pour sélectionner">
-          <img src="/${p}" alt="">
+          <img src="${displayUrl(p)}" alt="">
           <button type="button" class="gallery-thumb__delete" data-index="${i}" aria-label="Supprimer cette photo">&times;</button>
         </div>
       `).join('');
