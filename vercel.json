@@ -10,13 +10,14 @@
   ],
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "/api"
+      "source": "/api/config.js",
+      "destination": "/api/config"
     }
   ],
   "functions": {
-    "api/index.js": {
-      "maxDuration": 30
+    "api/catalog.js": {
+      "maxDuration": 30,
+      "includeFiles": "js/products.js"
     }
   }
 }
