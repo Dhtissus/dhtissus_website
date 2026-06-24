@@ -59,7 +59,7 @@
     const col = data.collections[activeFilter];
     heroTitle.textContent = `Collection ${col.name}`;
     heroDesc.textContent = col.description;
-    heroImage.src = col.image;
+    heroImage.src = utils.resolveImageUrl(col.image);
     heroImage.alt = `Collection ${col.name} — DH TISSU`;
     document.title = `${col.name} — Catalogue DH TISSU | Casablanca`;
   }

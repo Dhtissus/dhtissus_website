@@ -33,7 +33,20 @@ window.DH_UPLOAD = {
     return data.path;
   },
 
-  bindMainImagePicker({ pickBtnId, fileInputId, hiddenInputId, previewId, statusId }) {
+  syncMainImageToGallery(mainPath, galleryTextareaId) {
+    if (!galleryTextareaId || !mainPath) return;
+    const textarea = document.getElementById(galleryTextareaId);
+    if (!textarea) return;
+    const lines = textarea.value.split('\n').map((s) => s.trim()).filter(Boolean);
+    if (!lines.length) {
+      textarea.value = mainPath;
+      return;
+    }
+    lines[0] = mainPath;
+    textarea.value = lines.join('\n');
+  },
+
+  bindMainImagePicker({ pickBtnId, fileInputId, hiddenInputId, previewId, statusId, galleryTextareaId }) {
     const pickBtn = document.getElementById(pickBtnId);
     const fileInput = document.getElementById(fileInputId);
     const hiddenInput = document.getElementById(hiddenInputId);
@@ -56,6 +69,7 @@ window.DH_UPLOAD = {
       try {
         const imagePath = await this.uploadImage(file);
         hiddenInput.value = imagePath;
+        DH_UPLOAD.syncMainImageToGallery(imagePath, galleryTextareaId);
         preview.src = `${displayUrl(imagePath)}?t=${Date.now()}`;
         preview.hidden = false;
         if (status) {

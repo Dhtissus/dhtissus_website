@@ -14,9 +14,23 @@ window.DH_CATALOG = {
     return String(value).replace('.', ',');
   },
 
+  resolveImageUrl(imagePath) {
+    if (!imagePath) return '';
+    if (/^https?:\/\//i.test(imagePath)) return imagePath;
+    return `/${String(imagePath).replace(/^\/+/, '')}`;
+  },
+
   getProductImages(product) {
-    if (product.images && product.images.length) return product.images;
-    return [product.image];
+    const urls = [];
+    if (product.image) {
+      urls.push(product.image);
+      (product.images || []).forEach((src) => {
+        if (src && src !== product.image) urls.push(src);
+      });
+    } else if (product.images?.length) {
+      urls.push(...product.images);
+    }
+    return urls.map((src) => this.resolveImageUrl(src)).filter(Boolean);
   },
 
   getImageFitClass(product) {
@@ -109,7 +123,7 @@ window.DH_CATALOG = {
     const seen = new Set();
 
     Object.entries(data.collections || {}).forEach(([slug, col]) => {
-      const src = col.image;
+      const src = this.resolveImageUrl(col.image);
       if (!this.isUsableImage(src) || seen.has(src)) return;
       seen.add(src);
       pool.push({ src, label: col.name, href: `collection.html?c=${slug}` });

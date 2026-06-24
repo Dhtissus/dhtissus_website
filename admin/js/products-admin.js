@@ -155,6 +155,7 @@
     hiddenInputId: 'fImage',
     previewId: 'mainImagePreview',
     statusId: 'mainImageStatus',
+    galleryTextareaId: 'fImages',
   });
 
   const galleryUi = DH_UPLOAD.bindGalleryPicker({
@@ -343,7 +344,10 @@
       available: document.getElementById('fAvailable').value === 'true',
     };
 
-    if (!row.images.length && row.image) row.images = [row.image];
+    if (row.image) {
+      const gallery = row.images.filter((url) => url && url !== row.image);
+      row.images = [row.image, ...gallery];
+    }
 
     const { error } = editingId
       ? await client.from('products').update(row).eq('id', editingId)
