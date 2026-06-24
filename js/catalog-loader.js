@@ -15,6 +15,16 @@ window.DH_CATALOG_READY = (async function loadCatalog() {
   } catch (_) { /* fallback below */ }
 
   if (window.DH_TISSU) return window.DH_TISSU;
+
+  await new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'js/products.js';
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+
+  if (window.DH_TISSU) return window.DH_TISSU;
   throw new Error('Catalogue indisponible');
 })();
 

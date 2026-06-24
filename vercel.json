@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "installCommand": "npm install",
   "redirects": [
     {
       "source": "/admin",
@@ -9,7 +10,7 @@
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/api/:path*",
       "destination": "/api"
     }
   ],
