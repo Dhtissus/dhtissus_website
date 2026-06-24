@@ -28,7 +28,7 @@ if defined NODE (
   echo  Admin       : http://localhost:8080/admin
   echo  Ne fermez pas cette fenetre tant que vous consultez le site.
   echo.
-  start "DH TISSU Server" /MIN cmd /c ""%NODE%" "%~dp0server.js""
+  start "DH TISSU Server" /MIN cmd /c ""%NODE%" "%~dp0scripts\local-server.js""
   ping 127.0.0.1 -n 3 >nul
   start "" "http://localhost:8080"
   echo.

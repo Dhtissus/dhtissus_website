@@ -1,4 +1,4 @@
-const app = require('./lib/app');
+const app = require('../lib/app');
 
 const PREFERRED_PORTS = [Number(process.env.PORT) || 8080, 8081, 8082, 8888, 3000];
 
@@ -10,7 +10,7 @@ function tryListen(ports, index) {
   }
 
   const server = app.listen(port, '127.0.0.1', () => {
-    const { getConfig } = require('./lib/supabase');
+    const { getConfig } = require('../lib/supabase');
     const { configured } = getConfig();
     console.log('');
     console.log('  DH TISSU — Serveur démarré');
@@ -32,8 +32,4 @@ function tryListen(ports, index) {
   });
 }
 
-if (!process.env.VERCEL) {
-  tryListen(PREFERRED_PORTS, 0);
-}
-
-module.exports = app;
+tryListen(PREFERRED_PORTS, 0);

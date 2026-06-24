@@ -3,7 +3,7 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "start": "node server.js",
+    "start": "node scripts/local-server.js",
     "seed": "node scripts/seed.js"
   },
   "dependencies": {
