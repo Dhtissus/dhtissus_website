@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr-MA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Catalogue — DH TISSU | Tissus Haute Couture Casablanca</title>
+  <meta name="description" content="Catalogue DH TISSU — tissus haute couture disponibles : soie, velours, brochet, dentelle, mariage et caftan. Prix et disponibilité à Casablanca.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.dhtissu.ma/collection.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_MA">
+  <meta property="og:site_name" content="DH TISSU">
+  <meta property="og:title" content="Catalogue DH TISSU — Tissus Haute Couture">
+  <meta property="og:description" content="Découvrez nos tissus disponibles avec photos et prix. Soie, velours, brochet, mariage et caftan royal.">
+  <meta property="og:url" content="https://www.dhtissu.ma/collection.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body class="page-catalog">
+
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <span class="preloader__logo">DH TISSU</span>
+      <div class="preloader__line"></div>
+    </div>
+  </div>
+
+  <header class="header scrolled" id="header">
+    <nav class="nav container" aria-label="Navigation principale">
+      <a href="index.html" class="nav__logo" aria-label="DH TISSU — Accueil">
+        <img src="assets/logo-dhtissu.png" alt="DH TISSU — La Maison du Tissu Haute Couture" class="nav__logo-mark">
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav__menu" id="navMenu">
+        <li><a href="index.html#identite" class="nav__link">La Maison</a></li>
+        <li><a href="collection.html" class="nav__link nav__link--active">Catalogue</a></li>
+        <li><a href="index.html#experience" class="nav__link">Expérience</a></li>
+        <li><a href="index.html#galerie" class="nav__link">Galerie</a></li>
+        <li><a href="index.html#rendez-vous" class="nav__link nav__link--cta">Rendez-vous</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="catalog-hero" aria-label="En-tête catalogue">
+      <div class="catalog-hero__media">
+        <div class="catalog-hero__video-wrap" id="catalogHeroVideoWrap">
+          <video
+            class="catalog-hero__video"
+            id="catalogHeroVideo"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            aria-hidden="true">
+            <source src="assets/videos/fabric-cloth-hero.mp4" type="video/mp4">
+          </video>
+        </div>
+        <img id="catalogHeroImage" src="" alt="" hidden>
+        <div class="catalog-hero__overlay"></div>
+      </div>
+      <div class="catalog-hero__content container">
+        <nav class="catalog-breadcrumb" aria-label="Fil d'Ariane">
+          <a href="index.html">Accueil</a>
+          <span aria-hidden="true">/</span>
+          <span>Catalogue</span>
+        </nav>
+        <span class="section__eyebrow">Nos Produits</span>
+        <h1 class="catalog-hero__title" id="catalogTitle">Notre Catalogue</h1>
+        <p class="catalog-hero__desc" id="catalogDesc">Découvrez nos tissus disponibles — matières nobles sélectionnées avec exigence pour vos créations haute couture.</p>
+      </div>
+    </section>
+
+    <section class="catalog section" id="catalogue">
+      <div class="container">
+        <div class="catalog__toolbar reveal">
+          <div class="catalog__filters-wrap">
+            <span class="catalog__filters-label">Filtrer par collection</span>
+            <div class="catalog-filters" id="catalogFilters" role="group" aria-label="Filtrer les produits"></div>
+          </div>
+          <p class="catalog__count" id="productsCount">0 produits</p>
+        </div>
+
+        <div class="products-grid" id="productsGrid" aria-live="polite"></div>
+
+        <div class="catalog-empty" id="productsEmpty" hidden>
+          <p>Aucun produit dans cette collection pour le moment.</p>
+          <a href="index.html#rendez-vous" class="btn btn--primary">Nous contacter</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog-cta section section--dark">
+      <div class="container catalog-cta__inner reveal">
+        <div>
+          <span class="section__eyebrow">Showroom Casablanca</span>
+          <h2 class="section__title">Besoin d'un Conseil<br>Personnalisé ?</h2>
+          <p class="catalog-cta__desc">Venez toucher nos matières en showroom ou réservez une visite privée. Notre équipe vous accompagne dans le choix de l'étoffe parfaite.</p>
+        </div>
+        <div class="catalog-cta__actions">
+          <a href="index.html#rendez-vous" class="btn btn--primary">Prendre Rendez-vous</a>
+          <a href="https://wa.me/212600000000" class="btn btn--outline" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <span class="footer__logo">DH TISSU</span>
+          <p class="footer__tagline">L'Excellence Textile, Depuis Casablanca</p>
+          <p class="footer__slogan">Des matières d'exception pour les créations les plus exigeantes.</p>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4>La Maison</h4>
+            <ul>
+              <li><a href="index.html#identite">Notre Histoire</a></li>
+              <li><a href="collection.html">Catalogue</a></li>
+              <li><a href="index.html#experience">Expérience</a></li>
+              <li><a href="index.html#rendez-vous">Rendez-vous</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Collections</h4>
+            <ul>
+              <li><a href="collection.html?c=soie">Soie</a></li>
+              <li><a href="collection.html?c=velours">Velours</a></li>
+              <li><a href="collection.html?c=cachemire">Cachemire</a></li>
+              <li><a href="collection.html?c=perles">Tissus Perlés</a></li>
+              <li><a href="collection.html?c=paillete">Tissus Pailletés</a></li>
+              <li><a href="collection.html?c=haute-couture">Haute Couture</a></li>
+              <li><a href="collection.html?c=mariage">Mariage</a></li>
+              <li><a href="collection.html?c=caftan">Caftan Royal</a></li>
+              <li><a href="collection.html?c=brochet">Brochet de Soie</a></li>
+              <li><a href="collection.html?c=brocard">Brocard</a></li>
+              <li><a href="collection.html?c=mousseline">Tlija de Soie</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Contact</h4>
+            <ul>
+              <li>Casablanca, Maroc</li>
+              <li><a href="https://www.instagram.com/dhtissus?igsh=YzdwOW51ZTNkYjgx" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a href="https://wa.me/212600000000" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+              <li>Lun – Sam · 10h – 19h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 DH TISSU. Tous droits réservés.</p>
+        <div class="footer__legal">
+          <a href="index.html">Accueil</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/212600000000?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20tissus%20disponibles."
+     class="whatsapp-float"
+     id="whatsappFloat"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Parler avec un conseiller sur WhatsApp">
+    <svg class="whatsapp-float__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="whatsapp-float__text">Parler avec un conseiller</span>
+  </a>
+
+  <script src="js/catalog-loader.js"></script>
+  <script src="js/catalog-utils.js"></script>
+  <script src="js/whatsapp-site.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/collection.js"></script>
+</body>
+</html>

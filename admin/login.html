@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion — DH TISSU Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="../assets/logo-dhtissu.png" alt="La Maison du Tissu — Haute Couture">
+      </div>
+      <p class="subtitle">Espace administration</p>
+      <div id="loginAlert" hidden></div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="username" placeholder="admin@dhtissu.ma">
+        </div>
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn--primary" id="loginBtn">Se connecter</button>
+      </form>
+      <p style="margin-top:1.5rem;text-align:center;font-size:0.8rem;color:var(--text-muted)">
+        <a href="../index.html" style="color:var(--champagne)">← Retour au site</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    (async function () {
+      try {
+        await DH_ADMIN.init();
+        const client = DH_ADMIN.getClient();
+        const { data: { session } } = await client.auth.getSession();
+        if (session) window.location.href = '/admin/index.html';
+      } catch (e) {
+        showAlert(e.message, 'info');
+      }
+
+      document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('loginBtn');
+        btn.disabled = true;
+        btn.textContent = 'Connexion…';
+        try {
+          await DH_ADMIN.login(
+            document.getElementById('email').value.trim(),
+            document.getElementById('password').value
+          );
+          window.location.href = '/admin/index.html';
+        } catch (err) {
+          showAlert(err.message || 'Identifiants incorrects', 'error');
+          btn.disabled = false;
+          btn.textContent = 'Se connecter';
+        }
+      });
+
+      function showAlert(msg, type) {
+        const el = document.getElementById('loginAlert');
+        el.hidden = false;
+        el.className = 'alert alert--' + type;
+        el.textContent = msg;
+      }
+    })();
+  </script>
+</body>
+</html>

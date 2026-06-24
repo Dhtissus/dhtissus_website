@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr-MA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Produit — DH TISSU | Tissus Haute Couture Casablanca</title>
+  <meta name="description" content="Fiche produit DH TISSU — tissu haute couture à Casablanca.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" id="productCanonical" href="https://www.dhtissu.ma/product.html">
+
+  <meta property="og:type" content="product">
+  <meta property="og:locale" content="fr_MA">
+  <meta property="og:site_name" content="DH TISSU">
+  <meta property="og:title" id="ogTitle" content="Produit — DH TISSU">
+  <meta property="og:description" id="ogDescription" content="">
+  <meta property="og:image" id="ogImage" content="">
+  <meta property="og:url" id="ogUrl" content="">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body class="page-product">
+
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <span class="preloader__logo">DH TISSU</span>
+      <div class="preloader__line"></div>
+    </div>
+  </div>
+
+  <header class="header scrolled" id="header">
+    <nav class="nav container" aria-label="Navigation principale">
+      <a href="index.html" class="nav__logo" aria-label="DH TISSU — Accueil">
+        <img src="assets/logo-dhtissu.png" alt="DH TISSU — La Maison du Tissu Haute Couture" class="nav__logo-mark">
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav__menu" id="navMenu">
+        <li><a href="index.html#identite" class="nav__link">La Maison</a></li>
+        <li><a href="collection.html" class="nav__link">Catalogue</a></li>
+        <li><a href="index.html#experience" class="nav__link">Expérience</a></li>
+        <li><a href="index.html#galerie" class="nav__link">Galerie</a></li>
+        <li><a href="index.html#rendez-vous" class="nav__link nav__link--cta">Rendez-vous</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="productMain">
+    <!-- Contenu injecté par product.js -->
+    <section class="product-not-found section" id="productNotFound" hidden>
+      <div class="container product-not-found__inner">
+        <span class="section__eyebrow">Introuvable</span>
+        <h1 class="section__title">Produit non disponible</h1>
+        <p>Ce tissu n'existe pas ou n'est plus référencé dans notre catalogue.</p>
+        <a href="collection.html" class="btn btn--primary">Retour au catalogue</a>
+      </div>
+    </section>
+
+    <article class="product-page" id="productPage" hidden>
+      <div class="container">
+        <nav class="product-breadcrumb reveal" id="productBreadcrumb" aria-label="Fil d'Ariane"></nav>
+
+        <div class="product-layout">
+          <div class="product-gallery reveal">
+            <div class="product-gallery__main">
+              <img id="productMainImage" src="" alt="">
+            </div>
+            <div class="product-gallery__thumbs" id="productThumbs"></div>
+          </div>
+
+          <div class="product-info reveal">
+            <a href="#" class="product-info__collection" id="productCollection"></a>
+            <h1 class="product-info__title" id="productTitle"></h1>
+            <p class="product-info__ref" id="productRef"></p>
+
+            <div class="product-info__price-row">
+              <div class="product-info__price">
+                <span class="product-info__price-value" id="productPrice"></span>
+                <span class="product-info__price-unit" id="productPriceUnit"></span>
+              </div>
+              <span class="product-info__stock" id="productStock"></span>
+            </div>
+
+            <p class="product-info__summary" id="productSummary"></p>
+
+            <dl class="product-specs" id="productSpecs"></dl>
+
+            <div class="product-actions" id="productActions"></div>
+
+            <ul class="product-trust">
+              <li><span aria-hidden="true">◆</span> Showroom privé Casablanca</li>
+              <li><span aria-hidden="true">◆</span> Conseil stylistique sur mesure</li>
+              <li><span aria-hidden="true">◆</span> Réservation WhatsApp ou rendez-vous</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-details reveal">
+          <div class="product-details__tabs" role="tablist" aria-label="Informations produit">
+            <button type="button" class="product-details__tab active" role="tab" aria-selected="true" data-tab="description">Description</button>
+            <button type="button" class="product-details__tab" role="tab" aria-selected="false" data-tab="caracteristiques">Caractéristiques</button>
+            <button type="button" class="product-details__tab" role="tab" aria-selected="false" data-tab="livraison">Livraison & conseils</button>
+          </div>
+
+          <div class="product-details__panels">
+            <div class="product-details__panel active" id="panel-description" role="tabpanel">
+              <div class="product-details__text" id="productDescription"></div>
+            </div>
+            <div class="product-details__panel" id="panel-caracteristiques" role="tabpanel" hidden>
+              <ul class="product-features" id="productFeatures"></ul>
+            </div>
+            <div class="product-details__panel" id="panel-livraison" role="tabpanel" hidden>
+              <div class="product-details__text">
+                <p><strong>Retrait showroom</strong> — Casablanca, sur rendez-vous du lundi au samedi, 10h à 19h.</p>
+                <p><strong>Livraison</strong> — Disponible sur demande au Maroc. Contactez-nous via WhatsApp pour un devis.</p>
+                <p><strong>Conseil couture</strong> — Notre équipe vous guide sur la quantité, la coupe et l'association de matières pour votre projet mariage, caftan ou collection styliste.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="product-related" id="productRelated" hidden>
+          <div class="section__header">
+            <span class="section__eyebrow">Vous aimerez aussi</span>
+            <h2 class="section__title">Produits similaires</h2>
+          </div>
+          <div class="products-grid products-grid--related" id="relatedProducts"></div>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <span class="footer__logo">DH TISSU</span>
+          <p class="footer__tagline">L'Excellence Textile, Depuis Casablanca</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4>Boutique</h4>
+            <ul>
+              <li><a href="collection.html">Catalogue</a></li>
+              <li><a href="index.html#rendez-vous">Rendez-vous</a></li>
+              <li><a href="https://wa.me/212600000000" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>La Maison</h4>
+            <ul>
+              <li><a href="index.html#identite">Notre Histoire</a></li>
+              <li><a href="index.html#experience">Expérience</a></li>
+              <li><a href="index.html#galerie">Galerie</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Contact</h4>
+            <ul>
+              <li>Casablanca, Maroc</li>
+              <li>Lun – Sam · 10h – 19h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 DH TISSU. Tous droits réservés.</p>
+        <a href="collection.html">← Retour au catalogue</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/212600000000" class="whatsapp-float" id="whatsappFloat" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg class="whatsapp-float__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="whatsapp-float__text">Commander sur WhatsApp</span>
+  </a>
+
+  <script src="js/catalog-loader.js"></script>
+  <script src="js/catalog-utils.js"></script>
+  <script src="js/whatsapp-site.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/product.js"></script>
+</body>
+</html>
