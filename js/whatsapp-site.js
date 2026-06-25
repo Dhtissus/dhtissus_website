@@ -92,10 +92,6 @@
     }, true);
   }
 
-  if (document.getElementById('whatsappFloat')) {
-    document.body.classList.add('has-whatsapp-float');
-  }
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', applyAll);
   } else {

@@ -1301,17 +1301,24 @@ a, button, .catalog-filter, .product-details__tab {
 }
 
 /* ============================================
-   WHATSAPP FLOAT
+   VOICE WIDGET (Qubot) + WHATSAPP FLOAT
    ============================================ */
 :root {
+  --float-widget-gap: 0.75rem;
   --float-widget-edge: 1rem;
   --float-whatsapp-size: 56px;
 }
 
-@media (max-width: 1024px) {
-  body.has-whatsapp-float {
-    padding-bottom: calc(4.5rem + var(--safe-bottom));
-  }
+body.has-floating-widgets {
+  padding-bottom: calc(5.5rem + var(--safe-bottom));
+}
+
+#vw-container {
+  right: auto !important;
+  left: calc(1.5rem + var(--safe-left)) !important;
+  bottom: calc(1.5rem + var(--safe-bottom)) !important;
+  z-index: 900 !important;
+  max-width: min(420px, calc(100vw - 3rem - var(--safe-left) - var(--safe-right))) !important;
 }
 
 /* ============================================
@@ -1573,6 +1580,14 @@ a, button, .catalog-filter, .product-details__tab {
     background: var(--charcoal) !important;
   }
 
+  #vw-container {
+    left: calc(var(--float-widget-edge) + var(--safe-left)) !important;
+    bottom: calc(var(--float-widget-edge) + var(--safe-bottom)) !important;
+    width: auto !important;
+    max-width: none !important;
+    transform-origin: left bottom;
+  }
+
   .whatsapp-float {
     bottom: calc(var(--float-widget-edge) + var(--safe-bottom));
     right: calc(var(--float-widget-edge) + var(--safe-right));
@@ -1610,6 +1625,14 @@ a, button, .catalog-filter, .product-details__tab {
   :root {
     --float-widget-edge: 0.75rem;
     --float-whatsapp-size: 52px;
+  }
+
+  #vw-container {
+    transform: scale(0.94);
+  }
+
+  body.has-floating-widgets {
+    padding-bottom: calc(5rem + var(--safe-bottom));
   }
 }
 
