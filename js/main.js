@@ -24,20 +24,55 @@
   /* ── Mobile nav ── */
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
+  const navContainer = document.querySelector('.nav.container');
+  const mobileNavMq = window.matchMedia('(max-width: 1024px)');
+
+  let navBackdrop = document.querySelector('.nav__backdrop');
+  if (!navBackdrop) {
+    navBackdrop = document.createElement('div');
+    navBackdrop.className = 'nav__backdrop';
+    navBackdrop.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(navBackdrop);
+  }
 
   const closeMobileNav = () => {
     if (!navMenu || !navToggle) return;
     navMenu.classList.remove('active');
     navToggle.classList.remove('active');
     navToggle.setAttribute('aria-expanded', 'false');
+    navMenu.setAttribute('aria-hidden', 'true');
+    navBackdrop.classList.remove('visible');
+    navBackdrop.setAttribute('aria-hidden', 'true');
+    if (header) header.classList.remove('nav-open');
+    document.body.classList.remove('nav-open');
     document.body.style.overflow = '';
   };
 
+  const syncNavPlacement = () => {
+    if (!navMenu || !navContainer) return;
+    if (mobileNavMq.matches) {
+      if (navMenu.parentElement !== document.body) document.body.appendChild(navMenu);
+    } else if (navMenu.parentElement !== navContainer) {
+      navContainer.appendChild(navMenu);
+      closeMobileNav();
+    }
+  };
+
   if (navToggle && navMenu) {
+    navMenu.setAttribute('aria-hidden', 'true');
+    syncNavPlacement();
+    mobileNavMq.addEventListener('change', syncNavPlacement);
+
     navToggle.addEventListener('click', () => {
+      syncNavPlacement();
       const isOpen = navMenu.classList.toggle('active');
       navToggle.classList.toggle('active', isOpen);
       navToggle.setAttribute('aria-expanded', isOpen);
+      navMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      navBackdrop.classList.toggle('visible', isOpen);
+      navBackdrop.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      if (header) header.classList.toggle('nav-open', isOpen);
+      document.body.classList.toggle('nav-open', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
@@ -45,8 +80,11 @@
       link.addEventListener('click', closeMobileNav);
     });
 
+    navBackdrop.addEventListener('click', closeMobileNav);
+
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) closeMobileNav();
+      syncNavPlacement();
+      if (window.innerWidth > 1024) closeMobileNav();
     }, { passive: true });
 
     document.addEventListener('keydown', (e) => {

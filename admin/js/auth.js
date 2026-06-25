@@ -74,6 +74,52 @@ window.DH_ADMIN = (function () {
         logout();
       });
     }
+
+    bindMobileAdminNav();
+  }
+
+  function bindMobileAdminNav() {
+    const btn = document.getElementById('adminMenuBtn');
+    const sidebar = document.querySelector('.admin-sidebar');
+    const backdrop = document.getElementById('adminSidebarBackdrop');
+    if (!btn || !sidebar) return;
+
+    const close = () => {
+      sidebar.classList.remove('open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+      if (backdrop) backdrop.hidden = true;
+      document.body.classList.remove('admin-nav-open');
+      document.body.style.overflow = '';
+    };
+
+    const open = () => {
+      sidebar.classList.add('open');
+      btn.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+      if (backdrop) backdrop.hidden = false;
+      document.body.classList.add('admin-nav-open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    btn.addEventListener('click', () => {
+      if (sidebar.classList.contains('open')) close();
+      else open();
+    });
+
+    if (backdrop) backdrop.addEventListener('click', close);
+
+    sidebar.querySelectorAll('.admin-nav a').forEach((link) => {
+      link.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) close();
+    }, { passive: true });
   }
 
   return { init, requireAuth, login, logout, formatPrice, renderSidebar, getClient: () => supabase };

@@ -226,6 +226,13 @@ a, button, .catalog-filter, .product-details__tab {
   display: flex;
   align-items: center;
   gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__menu li {
+  list-style: none;
 }
 
 .nav__link {
@@ -1294,29 +1301,27 @@ a, button, .catalog-filter, .product-details__tab {
 }
 
 /* ============================================
-   VOICE WIDGET (Qubot)
+   WHATSAPP FLOAT
    ============================================ */
-#vw-container {
-  right: auto !important;
-  left: calc(1.5rem + var(--safe-left)) !important;
-  bottom: calc(1.5rem + var(--safe-bottom)) !important;
+:root {
+  --float-widget-edge: 1rem;
+  --float-whatsapp-size: 56px;
 }
 
-@media (max-width: 768px) {
-  #vw-container {
-    left: calc(1.25rem + var(--safe-left)) !important;
-    bottom: calc(1.25rem + var(--safe-bottom)) !important;
+@media (max-width: 1024px) {
+  body.has-whatsapp-float {
+    padding-bottom: calc(4.5rem + var(--safe-bottom));
   }
 }
 
 /* ============================================
-   WHATSAPP FLOAT
+   WHATSAPP FLOAT (button)
    ============================================ */
 .whatsapp-float {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 900;
+  bottom: calc(1.5rem + var(--safe-bottom));
+  right: calc(1.5rem + var(--safe-right));
+  z-index: 901;
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -1452,56 +1457,107 @@ a, button, .catalog-filter, .product-details__tab {
   }
 }
 
-@media (max-width: 768px) {
-  :root {
-    --section-padding: clamp(3.5rem, 10vw, 5rem);
+@media (max-width: 1024px) {
+  .header,
+  .header.scrolled {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .header.scrolled {
+    background: rgba(247, 243, 237, 0.98);
+  }
+
+  body.nav-open .header {
+    background: rgba(247, 243, 237, 0.98);
+    box-shadow: 0 1px 0 var(--border);
+    z-index: 1003;
+  }
+
+  .nav__backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1001;
+    background: rgba(44, 36, 32, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity var(--duration-fast), visibility var(--duration-fast);
+  }
+
+  .nav__backdrop.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .nav__toggle {
     display: flex;
+    order: 3;
+    margin-left: auto;
+    position: relative;
+    z-index: 1003;
   }
 
   .nav__logo {
     position: relative;
-    z-index: 1002;
+    z-index: 1003;
+    order: 1;
   }
 
   .nav__menu {
+    display: none !important;
     position: fixed;
-    inset: 0;
-    z-index: 1001;
-    background: rgba(247, 243, 237, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 100vw;
+    height: 100%;
+    height: 100dvh;
+    margin: 0;
+    z-index: 1002;
+    background: rgba(247, 243, 237, 0.99);
     flex-direction: column;
     justify-content: center;
-    gap: 2rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity var(--duration-medium), visibility var(--duration-medium);
-    padding: calc(5rem + var(--safe-top)) 1.5rem calc(2rem + var(--safe-bottom));
+    align-items: stretch;
+    gap: 0;
+    padding: calc(5.5rem + var(--safe-top)) 1.5rem calc(2rem + var(--safe-bottom));
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    list-style: none;
+    pointer-events: none;
+    visibility: hidden;
   }
 
   .nav__menu.active {
-    opacity: 1;
+    display: flex !important;
     visibility: visible;
+    pointer-events: auto;
+    animation: navMenuIn var(--duration-fast) var(--ease-luxury);
+  }
+
+  .nav__menu li {
+    width: 100%;
+    text-align: center;
   }
 
   .nav__menu .nav__link {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--charcoal) !important;
-    padding: 0.35rem 0;
-    min-height: 44px;
-    display: inline-flex;
+    padding: 0.85rem 1rem;
+    min-height: 48px;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 
   .nav__menu .nav__link--cta {
-    margin-top: 0.5rem;
+    margin: 1rem auto 0;
+    max-width: 280px;
     justify-content: center;
-    min-width: 220px;
   }
 
   .header:not(.scrolled) .nav__logo-main {
@@ -1509,8 +1565,57 @@ a, button, .catalog-filter, .product-details__tab {
   }
 
   .header.scrolled .nav__logo-main,
-  .nav__menu.active ~ .nav__logo .nav__logo-main {
+  .header.nav-open .nav__logo-main {
     color: var(--charcoal);
+  }
+
+  .header.nav-open .nav__toggle span {
+    background: var(--charcoal) !important;
+  }
+
+  .whatsapp-float {
+    bottom: calc(var(--float-widget-edge) + var(--safe-bottom));
+    right: calc(var(--float-widget-edge) + var(--safe-right));
+    padding: 0;
+    border-radius: 50%;
+    width: var(--float-whatsapp-size);
+    height: var(--float-whatsapp-size);
+    min-width: var(--float-whatsapp-size);
+    justify-content: center;
+    box-shadow: 0 6px 28px rgba(44, 36, 32, 0.22);
+  }
+
+  .whatsapp-float__text {
+    display: none;
+  }
+
+  .whatsapp-float__icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@keyframes navMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --float-widget-edge: 0.75rem;
+    --float-whatsapp-size: 52px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: clamp(3.5rem, 10vw, 5rem);
   }
 
   .hero__content {
@@ -1605,25 +1710,6 @@ a, button, .catalog-filter, .product-details__tab {
   .footer__legal {
     flex-wrap: wrap;
     justify-content: center;
-  }
-
-  .whatsapp-float {
-    bottom: calc(1.25rem + var(--safe-bottom));
-    right: calc(1.25rem + var(--safe-right));
-    padding: 0.85rem;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    justify-content: center;
-  }
-
-  .whatsapp-float__text {
-    display: none;
-  }
-
-  .whatsapp-float__icon {
-    width: 26px;
-    height: 26px;
   }
 
   .experience__image-wrap {

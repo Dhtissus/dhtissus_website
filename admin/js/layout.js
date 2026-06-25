@@ -27,10 +27,16 @@ function mountAdminPage(activePage, title, contentHtml) {
   document.body.innerHTML = `
     <div class="admin-layout">
       ${adminLayout(activePage)}
+      <div class="admin-sidebar-backdrop" id="adminSidebarBackdrop" hidden></div>
       <main class="admin-main">
         <div class="admin-header">
-          <h1>${title}</h1>
-          <span class="admin-user" id="adminUser"></span>
+          <button type="button" class="admin-menu-btn" id="adminMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="admin-header__titles">
+            <h1>${title}</h1>
+            <span class="admin-user" id="adminUser"></span>
+          </div>
         </div>
         ${contentHtml}
       </main>
